@@ -12,13 +12,17 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UITableViewController {
+    @IBOutlet weak var tblView: UITableView!
 
     let myRealm = try! Realm()
     let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+        
         loadData()
+        loadArticlesFromDataBase()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +62,36 @@ class ViewController: UITableViewController {
         }
         
         
+    }
+    
+    func loadDataBase(newArticles: String) -> Results<Dog> {
+        let myRealm = try! Realm()
+        let myData = myRealm.objects(Dog.self).filter("dogName BEGINSWITH %@", newArticles)
+        
+        return myData
+    }
+    
+    func loadArticlesFromDataBase() -> [String] {
+        let myRealm = try! Realm()
+        var artclsArray: [String] = []
+        let newData = myRealm.objects(Dog.self)
+        
+        for d in newData {
+            artclsArray.append(d.dogName)
+            print("Latest news: \(artclsArray)")
+        }
+        
+        return artclsArray
+    }
+    
+    var load: AnyObject? {
+        get {
+            return UserDefaults.standard.object(forKey: "flag") as AnyObject?
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "flag")
+            UserDefaults.standard.synchronize()
+        }
     }
 
 }

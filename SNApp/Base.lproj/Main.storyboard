@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Latest news-->
         <scene sceneID="wUX-U2-ha8">
             <objects>
-                <tableViewController id="7B7-4z-XLb" customClass="ViewController" customModule="SNApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Latest news" id="7B7-4z-XLb" customClass="ViewController" customModule="SNApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MA8-1e-5Xq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,11 +32,14 @@
                             <outlet property="delegate" destination="7B7-4z-XLb" id="1pQ-gb-BWL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="V9V-xK-K23"/>
+                    <navigationItem key="navigationItem" title="Latest news" id="V9V-xK-K23"/>
+                    <connections>
+                        <outlet property="tblView" destination="MA8-1e-5Xq" id="cEO-9h-iLl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Hw-a0-rMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="132"/>
+            <point key="canvasLocation" x="1866" y="132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="txa-Yp-hh1">
