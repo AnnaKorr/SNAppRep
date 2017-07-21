@@ -22,7 +22,8 @@ class ViewController: UITableViewController {
         print(Realm.Configuration.defaultConfiguration.fileURL)
         
         loadData()
-        loadArticlesFromDataBase()
+        let aaa = loadArticlesFromDataBase()
+        print("Hello \(aaa)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +94,17 @@ class ViewController: UITableViewController {
             UserDefaults.standard.synchronize()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return loadArticlesFromDataBase().count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        cell.textLabel?.text = loadArticlesFromDataBase()[indexPath.row]
+        return cell
+        
+    }
+
 
 }
 
