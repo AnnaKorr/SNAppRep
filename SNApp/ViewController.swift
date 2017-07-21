@@ -11,7 +11,7 @@ import RealmSwift
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
     let myRealm = try! Realm()
     let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
