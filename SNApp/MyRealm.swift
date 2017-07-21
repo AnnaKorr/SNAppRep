@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
+import Alamofire
+import SwiftyJSON
+
+class Dog: Object {
+    dynamic var dogName: String = ""
+    dynamic var dogAge: Int = 0
+    var myList = List<ArticlesData>()
+    
+    override static func primaryKey() -> String? {
+        return "dogName"
+    }
+}
