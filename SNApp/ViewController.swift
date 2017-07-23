@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Alamofire
 import SwiftyJSON
+import NVHTarGzip
 
 class ViewController: UITableViewController {
     @IBOutlet weak var tblView: UITableView!
@@ -93,6 +94,7 @@ class ViewController: UITableViewController {
 
         }
         
+        //скачивание в файл информации по ссылке
         let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
         Alamofire.download(listNews, to: destination)
             .downloadProgress { progress in

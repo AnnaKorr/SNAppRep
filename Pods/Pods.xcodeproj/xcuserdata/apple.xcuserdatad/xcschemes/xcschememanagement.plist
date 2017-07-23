@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NVHTarGzip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SNApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00FC2AF07FFFC2EF983079B3683ADD59</key>
+		<key>2C3626FB71CE892F40D73C530C8CB039</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>14A7E262573EFF12D837FD1E5D9472E5</key>
+		<key>602C0DEA9BAFA09519DDA9C340173800</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>69FE62A3273103DC2837588C187D72EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B7EB140DE46B6958286FF4A8539B18C</key>
+		<key>9D657097D9DD499E944412C6F2BD4E87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AAC38793DF6AC6817121CFDB0EFC4862</key>
+		<key>E1061A990B9D48EB6409CBAB6FDB5612</key>
 		<dict>
 			<key>primary</key>
 			<true/>
