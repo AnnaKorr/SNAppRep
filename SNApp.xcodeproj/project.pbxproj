@@ -69,9 +69,9 @@
 		187E626C1F220B0E0089D3DF /* SNApp */ = {
 			isa = PBXGroup;
 			children = (
-				187E62841F220E150089D3DF /* MyData.swift */,
 				187E62821F220C5A0089D3DF /* MyRealm.swift */,
 				187E62861F2214080089D3DF /* ArticlesData.swift */,
+				187E62841F220E150089D3DF /* MyData.swift */,
 				187E626F1F220B0E0089D3DF /* ViewController.swift */,
 				187E62711F220B0E0089D3DF /* Main.storyboard */,
 				187E62771F220B0E0089D3DF /* Assets.xcassets */,
