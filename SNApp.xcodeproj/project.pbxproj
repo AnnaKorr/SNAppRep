@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183B4D6F1F24D25400E3ACF2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B4D6E1F24D25400E3ACF2 /* Utils.swift */; };
 		187E626E1F220B0E0089D3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E626D1F220B0E0089D3DF /* AppDelegate.swift */; };
 		187E62701F220B0E0089D3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E626F1F220B0E0089D3DF /* ViewController.swift */; };
 		187E62731F220B0E0089D3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E62711F220B0E0089D3DF /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183B4D6E1F24D25400E3ACF2 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		187E626A1F220B0E0089D3DF /* SNApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187E626D1F220B0E0089D3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187E626F1F220B0E0089D3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				187E62861F2214080089D3DF /* ArticlesData.swift */,
 				187E62841F220E150089D3DF /* MyData.swift */,
 				187E626F1F220B0E0089D3DF /* ViewController.swift */,
+				183B4D6E1F24D25400E3ACF2 /* Utils.swift */,
 				187E62711F220B0E0089D3DF /* Main.storyboard */,
 				187E62771F220B0E0089D3DF /* Assets.xcassets */,
 				187E62791F220B0E0089D3DF /* LaunchScreen.storyboard */,
@@ -226,6 +229,7 @@
 				187E62701F220B0E0089D3DF /* ViewController.swift in Sources */,
 				187E62761F220B0E0089D3DF /* SNApp.xcdatamodeld in Sources */,
 				187E626E1F220B0E0089D3DF /* AppDelegate.swift in Sources */,
+				183B4D6F1F24D25400E3ACF2 /* Utils.swift in Sources */,
 				187E62851F220E150089D3DF /* MyData.swift in Sources */,
 				187E62871F2214080089D3DF /* ArticlesData.swift in Sources */,
 				187E62831F220C5A0089D3DF /* MyRealm.swift in Sources */,

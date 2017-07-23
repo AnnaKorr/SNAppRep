@@ -11,7 +11,10 @@ import RealmSwift
 import Alamofire
 import SwiftyJSON
 
-class MyData {
-
+class DataManager {
+    var articleName: String = ""
+    
+    var titleList: [String] = []
+    var authorList: [String] = []
     
 }

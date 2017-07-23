@@ -14,15 +14,15 @@ import SwiftyJSON
 class ViewController: UITableViewController {
     @IBOutlet weak var tblView: UITableView!
 
-    let myRealm = try! Realm()
     let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
-    var myArray: [String] = []
-    
+    let realmMain = try! Realm()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        print(Realm.Configuration.defaultConfiguration.fileURL ?? AnyObject.self)
         
-        loadData()
+       loadFile()
+       loadData()
        
     }
 
@@ -31,31 +31,29 @@ class ViewController: UITableViewController {
     }
     
     func loadData() {
+        let myRealm = try! Realm()
+
         Alamofire.request(myURl, method: .get).validate().responseJSON { (myResp) in
-            
+            ///Users/apple/Library/Developer/CoreSimulator/Devices/19868314-9509-4E29-912C-EB9BAAA84486/data/Containers/Bundle/Application/9EA10F75-6BBD-4B6C-A451-08FEA6936D/
+ 
             switch myResp.result {
             case .success(let myValue):
                 let myJSON = JSON(myValue)
                 let newDog = Dog()
-                newDog.dogAge = 5
                 newDog.dogName = myJSON["articles"][0]["title"].stringValue
-                //print("Hi \(newDog.dogName)")
-                
+
                 for (_, subJSON) in myJSON["articles"] {
                     let aaa = ArticlesData()
                     aaa.author = subJSON["author"].stringValue
                     aaa.title = subJSON["title"].stringValue
-                    newDog.myList.append(aaa)
-                    
                     
                 }
                 
-                //print(newDog)
-        
-                try! self.myRealm.write {
-                    self.myRealm.add(newDog, update: true)
-                    //print("My dog \(newDog.dogName) is \(newDog.dogAge) years.")
+                load = true as AnyObject
+                try! myRealm.write {
+                    myRealm.add(newDog, update: true)
                 }
+                
             case .failure(let error):
                 print(error)
             
@@ -64,29 +62,99 @@ class ViewController: UITableViewController {
             
         }
         
+       
+    }
+    
+    
+    func loadFile() {
+        let listNews = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
+        
+        let myPath = NSHomeDirectory() + "/Documents/testfile2Write"
+        print("Дома \n\(myPath)")
+        let tempPAth = NSTemporaryDirectory()
+        print("На работе \n\(tempPAth)")
+        
+        //создание и запись файла
+        do {
+            try listNews.write(toFile: myPath, atomically: true, encoding: String.Encoding.utf8)
+            print("NOTE: \n***FIle was created")
+        } catch let error as NSError {
+            print("NOTE: \n***File was not created, the reason is \(error).")
+        }
+        
+        //чтение файла
+        var newContent = ""
+        do {
+            newContent = try NSString(contentsOfFile: myPath, encoding: String.Encoding.utf8.rawValue) as String
+            print("NOTE: \n***File content is:\n\(newContent).")
+
+        } catch let error as NSError {
+            print("NOTE: \n***File content is not readable, the reason is \(error).")
+
+        }
+        
+        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
+        Alamofire.download(listNews, to: destination)
+            .downloadProgress { progress in
+            print("Download Progress: \(progress.fractionCompleted)")
+        }
+            .responseData { response in
+                if response.result.value != nil {
+                    print("jij \(String(describing: response.destinationURL?.path)) kokok")
+                }
+        }
         
     }
     
-    func loadDataBase(newArticles: String) -> Results<Dog> {
-        let myRealm = try! Realm()
-        let myData = myRealm.objects(Dog.self)
+   /* func loadDataBase(articleName: String) -> Results<Dog> {
+        let realmDB = try! Realm()
+        let myData = realmDB.objects(Dog.self).filter("dogName BEGINSWITH %@", articleName)
         
         return myData
     }
     
-    func loadArticlesFromDataBase() -> [String] {
-        let myRealm = try! Realm()
+    func removeInfoFromDB(title: String) {
+        let removeRealm = try! Realm()
+        let removeData = removeRealm.objects(Dog.self).filter("dogName BEGINSWITH %@", title)
+        
+        try! removeRealm.write {
+            removeRealm.delete(removeData)
+        }
+    } */
+    
+      func loadArticlesFromDataBase() -> [String] {
+        let realmLoadArticles = try! Realm()
         var artclsArray: [String] = []
-        let newData = myRealm.objects(Dog.self)
+        let newData = realmLoadArticles.objects(Dog.self)
         
         for d in newData {
             artclsArray.append(d.dogName)
-            //print("Latest news: \(artclsArray)")
+            print("Latest news: \(artclsArray)")
         }
         
         return artclsArray
     }
     
+      /* func loadArticlesList() -> [DataManager] {
+        let realmListArticles = try! Realm()
+        var newArticlesList: [DataManager] = []
+        let articlesData = realmListArticles.objects(Dog.self)
+        
+        for da in articlesData {
+            let newInfo: DataManager = DataManager()
+            newInfo.articleName = da.dogName
+            for subDa in da.myList {
+                newInfo.authorList.append(subDa.author)
+                newInfo.titleList.append(subDa.title)
+            }
+            newArticlesList.append(newInfo)
+        }
+        
+        print("Hi: \n\(newArticlesList)")
+
+        return newArticlesList
+        
+    } */
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let aaa = loadArticlesFromDataBase()
@@ -96,12 +164,20 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let aaa = loadArticlesFromDataBase()
         cell.textLabel?.text = aaa[indexPath.row]
-        return cell
         
+        try! self.realmMain.write {
+            self.realmMain.deleteAll()
+            print("empty")
+        }
+        
+        return cell
     }
 
+    
 
 }
+
+
 
 var load: AnyObject? {
     get {
