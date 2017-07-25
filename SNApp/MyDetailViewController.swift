@@ -9,14 +9,16 @@
 import UIKit
 
 class MyDetailViewController: UICollectionViewController {
-
+    
+    @IBOutlet weak var detailTitleLabel: UILabel!
+    var ttt = ViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         naviEdit()
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,20 +45,17 @@ class MyDetailViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        //        return tempList.count
-        return 0
+        let aaa = ttt.loadArticlesFromDataBase()
+        return aaa.count
     }
 
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idCollCell", for: indexPath)
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

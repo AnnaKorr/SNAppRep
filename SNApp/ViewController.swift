@@ -70,8 +70,20 @@ class ViewController: UITableViewController {
        
     }
     
+    func loadArticlesFromDataBase() -> [String] {
+        let realmLoadArticles = try! Realm()
+        var artclsArray: [String] = []
+        let newData = realmLoadArticles.objects(Dog.self)
+        
+        for d in newData {
+            artclsArray.append(d.dogName)
+            //print("Latest news: \(artclsArray)")
+        }
+        
+        return artclsArray
+    }
     
-    func loadFile() {
+   /* func loadFile() {
         let listNews = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
         
         let myPath = NSHomeDirectory() + "/Documents/testfile2Write"
@@ -110,7 +122,7 @@ class ViewController: UITableViewController {
                 }
         }
         
-    }
+    }*/
     
    /* func loadDataBase(articleName: String) -> Results<Dog> {
         let realmDB = try! Realm()
@@ -127,19 +139,7 @@ class ViewController: UITableViewController {
             removeRealm.delete(removeData)
         }
     } */
-    
-      func loadArticlesFromDataBase() -> [String] {
-        let realmLoadArticles = try! Realm()
-        var artclsArray: [String] = []
-        let newData = realmLoadArticles.objects(Dog.self)
-        
-        for d in newData {
-            artclsArray.append(d.dogName)
-            //print("Latest news: \(artclsArray)")
-        }
-        
-        return artclsArray
-    }
+
     
       /* func loadArticlesList() -> [DataManager] {
         let realmListArticles = try! Realm()

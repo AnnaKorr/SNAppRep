@@ -18,7 +18,8 @@
 		187E62851F220E150089D3DF /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E62841F220E150089D3DF /* MyData.swift */; };
 		187E62871F2214080089D3DF /* ArticlesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E62861F2214080089D3DF /* ArticlesData.swift */; };
 		18852A0C1F2757A500C0EB3C /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0B1F2757A500C0EB3C /* MyTableViewCell.swift */; };
-		18852A0E1F2760D700C0EB3C /* MyDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0D1F2760D700C0EB3C /* MyDetailTableViewController.swift */; };
+		18852A0E1F2760D700C0EB3C /* MyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */; };
+		18852A101F27734000C0EB3C /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */; };
 		971558694D0B2F769C1CB850 /* Pods_SNApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95180F2B2FDA752C0A41D659 /* Pods_SNApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +37,8 @@
 		187E62841F220E150089D3DF /* MyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
 		187E62861F2214080089D3DF /* ArticlesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesData.swift; sourceTree = "<group>"; };
 		18852A0B1F2757A500C0EB3C /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
-		18852A0D1F2760D700C0EB3C /* MyDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDetailTableViewController.swift; sourceTree = "<group>"; };
+		18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDetailViewController.swift; sourceTree = "<group>"; };
+		18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3992FD896EDE34DC06678455 /* Pods-SNApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNApp/Pods-SNApp.release.xcconfig"; sourceTree = "<group>"; };
 		3F0066EAB52454D8464F5CD1 /* Pods-SNApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNApp/Pods-SNApp.debug.xcconfig"; sourceTree = "<group>"; };
 		95180F2B2FDA752C0A41D659 /* Pods_SNApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,8 +81,9 @@
 				187E62861F2214080089D3DF /* ArticlesData.swift */,
 				187E62841F220E150089D3DF /* MyData.swift */,
 				187E626F1F220B0E0089D3DF /* ViewController.swift */,
-				18852A0D1F2760D700C0EB3C /* MyDetailTableViewController.swift */,
+				18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */,
 				18852A0B1F2757A500C0EB3C /* MyTableViewCell.swift */,
+				18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */,
 				183B4D6E1F24D25400E3ACF2 /* Utils.swift */,
 				187E62711F220B0E0089D3DF /* Main.storyboard */,
 				187E62771F220B0E0089D3DF /* Assets.xcassets */,
@@ -235,9 +238,10 @@
 				187E62701F220B0E0089D3DF /* ViewController.swift in Sources */,
 				18852A0C1F2757A500C0EB3C /* MyTableViewCell.swift in Sources */,
 				187E62761F220B0E0089D3DF /* SNApp.xcdatamodeld in Sources */,
-				18852A0E1F2760D700C0EB3C /* MyDetailTableViewController.swift in Sources */,
+				18852A0E1F2760D700C0EB3C /* MyDetailViewController.swift in Sources */,
 				187E626E1F220B0E0089D3DF /* AppDelegate.swift in Sources */,
 				183B4D6F1F24D25400E3ACF2 /* Utils.swift in Sources */,
+				18852A101F27734000C0EB3C /* MyCollectionViewCell.swift in Sources */,
 				187E62851F220E150089D3DF /* MyData.swift in Sources */,
 				187E62871F2214080089D3DF /* ArticlesData.swift in Sources */,
 				187E62831F220C5A0089D3DF /* MyRealm.swift in Sources */,
