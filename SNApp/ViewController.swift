@@ -22,8 +22,13 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL ?? AnyObject.self)
         
-       loadFile()
-       loadData()
+        self.tblView.rowHeight = UITableViewAutomaticDimension
+        self.tblView.estimatedRowHeight = 70.0
+        
+        loadData()
+        
+        self.tblView.reloadData()
+
        
     }
 
@@ -35,7 +40,6 @@ class ViewController: UITableViewController {
         let myRealm = try! Realm()
 
         Alamofire.request(myURl, method: .get).validate().responseJSON { (myResp) in
-            ///Users/apple/Library/Developer/CoreSimulator/Devices/19868314-9509-4E29-912C-EB9BAAA84486/data/Containers/Bundle/Application/9EA10F75-6BBD-4B6C-A451-08FEA6936D/
  
             switch myResp.result {
             case .success(let myValue):
@@ -131,7 +135,7 @@ class ViewController: UITableViewController {
         
         for d in newData {
             artclsArray.append(d.dogName)
-            print("Latest news: \(artclsArray)")
+            //print("Latest news: \(artclsArray)")
         }
         
         return artclsArray
@@ -163,9 +167,10 @@ class ViewController: UITableViewController {
         return aaa.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
+        
         let aaa = loadArticlesFromDataBase()
-        cell.textLabel?.text = aaa[indexPath.row]
+        cell.myTitle?.text = aaa[indexPath.row]        
         
         try! self.realmMain.write {
             self.realmMain.deleteAll()
