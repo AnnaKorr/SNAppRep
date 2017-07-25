@@ -17,6 +17,7 @@ class ViewController: UITableViewController {
 
     let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
     let realmMain = try! Realm()
+    let newArt: InfoArraysData = InfoArraysData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class ViewController: UITableViewController {
         self.tblView.estimatedRowHeight = 70.0
         
         loadData()
+        loadArticlesFromDataBase()
         
         self.tblView.reloadData()
 
@@ -44,20 +46,23 @@ class ViewController: UITableViewController {
             switch myResp.result {
             case .success(let myValue):
                 let myJSON = JSON(myValue)
-                let newDog = Dog()
-                newDog.dogName = myJSON["articles"][0]["title"].stringValue
+                let info = ArticlesRealm()
+                info.articles_name = myJSON["articles"][0]["title"].stringValue
 
                 for (_, subJSON) in myJSON["articles"] {
-                    let aaa = ArticlesData()
+                    let aaa = SNAppData()
                     aaa.author = subJSON["author"].stringValue
                     aaa.title = subJSON["title"].stringValue
+                    aaa.descriptionMy = subJSON["description"].stringValue
                     
                 }
                 
                 load = true as AnyObject
                 try! myRealm.write {
-                    myRealm.add(newDog, update: true)
+                    myRealm.add(info, update: true)
                 }
+                
+                print("hi \(info)")
                 
             case .failure(let error):
                 print(error)
@@ -73,11 +78,11 @@ class ViewController: UITableViewController {
     func loadArticlesFromDataBase() -> [String] {
         let realmLoadArticles = try! Realm()
         var artclsArray: [String] = []
-        let newData = realmLoadArticles.objects(Dog.self)
+        let newData = realmLoadArticles.objects(ArticlesRealm.self)
         
         for d in newData {
-            artclsArray.append(d.dogName)
-            //print("Latest news: \(artclsArray)")
+            artclsArray.append(d.articles_name)
+            print("Latest news: \(artclsArray)")
         }
         
         return artclsArray
@@ -171,6 +176,7 @@ class ViewController: UITableViewController {
         
         let aaa = loadArticlesFromDataBase()
         cell.myTitle?.text = aaa[indexPath.row]        
+        print("Hello \(aaa)")
         
         try! self.realmMain.write {
             self.realmMain.deleteAll()

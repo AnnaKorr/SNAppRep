@@ -11,7 +11,7 @@ import RealmSwift
 import Alamofire
 import SwiftyJSON
 
-class DataManager {
+class InfoArraysData {
     var articleName: String = ""
     
     var titleList: [String] = []

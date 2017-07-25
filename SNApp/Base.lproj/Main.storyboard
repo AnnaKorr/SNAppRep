@@ -122,7 +122,8 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="EHo-Vz-XN5" secondAttribute="trailing" constant="12" id="tbG-AC-0Dd"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="detTitLabel" destination="EHo-Vz-XN5" id="Eif-MM-PN1"/>
+                                    <outlet property="detImgLabel" destination="XHm-2M-zGM" id="R8o-ws-oxX"/>
+                                    <outlet property="detTitLabel" destination="EHo-Vz-XN5" id="vhp-pR-GOT"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

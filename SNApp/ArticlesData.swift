@@ -14,5 +14,6 @@ import SwiftyJSON
 class ArticlesData: Object {
     dynamic var author: String = ""
     dynamic var title: String = ""
+ 
 
 }
