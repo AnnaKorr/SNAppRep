@@ -46,16 +46,26 @@ class ViewController: UITableViewController {
             switch myResp.result {
             case .success(let myValue):
                 let myJSON = JSON(myValue)
-                let info = ArticlesRealm()
+                let info = InfoListRealm()
                 info.articles_name = myJSON["articles"][0]["title"].stringValue
+                self.newArt.articleName = myJSON["articles"][0]["title"].stringValue
 
                 for (_, subJSON) in myJSON["articles"] {
                     let aaa = SNAppData()
                     aaa.author = subJSON["author"].stringValue
                     aaa.title = subJSON["title"].stringValue
                     aaa.descriptionMy = subJSON["description"].stringValue
+                    aaa.publishedAt = subJSON["publishedAt"].stringValue
+                    aaa.url = subJSON["url"].stringValue
+                    aaa.urlToImage = subJSON["urlToImage"].stringValue
+                    self.newArt.authorList.append(subJSON["author"].stringValue)
+                    self.newArt.titleList.append(subJSON["title"].stringValue)
                     
+                    info.myList.append(aaa)
+
                 }
+                
+                print("OMG \n***\(info)")
                 
                 load = true as AnyObject
                 try! myRealm.write {
@@ -78,7 +88,7 @@ class ViewController: UITableViewController {
     func loadArticlesFromDataBase() -> [String] {
         let realmLoadArticles = try! Realm()
         var artclsArray: [String] = []
-        let newData = realmLoadArticles.objects(ArticlesRealm.self)
+        let newData = realmLoadArticles.objects(InfoListRealm.self)
         
         for d in newData {
             artclsArray.append(d.articles_name)

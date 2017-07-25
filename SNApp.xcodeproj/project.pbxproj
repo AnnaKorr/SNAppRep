@@ -22,6 +22,7 @@
 		18852A101F27734000C0EB3C /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */; };
 		18852A121F277D0F00C0EB3C /* SNAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A111F277D0F00C0EB3C /* SNAppData.swift */; };
 		18852A141F277F7900C0EB3C /* ArticlesRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A131F277F7900C0EB3C /* ArticlesRealm.swift */; };
+		18852A161F278AA700C0EB3C /* InfoListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A151F278AA700C0EB3C /* InfoListRealm.swift */; };
 		971558694D0B2F769C1CB850 /* Pods_SNApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95180F2B2FDA752C0A41D659 /* Pods_SNApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		18852A111F277D0F00C0EB3C /* SNAppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNAppData.swift; sourceTree = "<group>"; };
 		18852A131F277F7900C0EB3C /* ArticlesRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesRealm.swift; sourceTree = "<group>"; };
+		18852A151F278AA700C0EB3C /* InfoListRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoListRealm.swift; sourceTree = "<group>"; };
 		3992FD896EDE34DC06678455 /* Pods-SNApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNApp/Pods-SNApp.release.xcconfig"; sourceTree = "<group>"; };
 		3F0066EAB52454D8464F5CD1 /* Pods-SNApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNApp/Pods-SNApp.debug.xcconfig"; sourceTree = "<group>"; };
 		95180F2B2FDA752C0A41D659 /* Pods_SNApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +85,7 @@
 			children = (
 				187E62841F220E150089D3DF /* InfoArraysData.swift */,
 				187E62861F2214080089D3DF /* ArticlesData.swift */,
-				18852A131F277F7900C0EB3C /* ArticlesRealm.swift */,
+				18852A151F278AA700C0EB3C /* InfoListRealm.swift */,
 				18852A111F277D0F00C0EB3C /* SNAppData.swift */,
 				187E626F1F220B0E0089D3DF /* ViewController.swift */,
 				18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */,
@@ -94,6 +96,7 @@
 				187E62771F220B0E0089D3DF /* Assets.xcassets */,
 				187E62791F220B0E0089D3DF /* LaunchScreen.storyboard */,
 				187E626D1F220B0E0089D3DF /* AppDelegate.swift */,
+				18852A131F277F7900C0EB3C /* ArticlesRealm.swift */,
 				187E62821F220C5A0089D3DF /* MyRealm.swift */,
 				187E627C1F220B0E0089D3DF /* Info.plist */,
 				187E62741F220B0E0089D3DF /* SNApp.xcdatamodeld */,
@@ -245,6 +248,7 @@
 				18852A121F277D0F00C0EB3C /* SNAppData.swift in Sources */,
 				18852A141F277F7900C0EB3C /* ArticlesRealm.swift in Sources */,
 				18852A0C1F2757A500C0EB3C /* MyTableViewCell.swift in Sources */,
+				18852A161F278AA700C0EB3C /* InfoListRealm.swift in Sources */,
 				187E62761F220B0E0089D3DF /* SNApp.xcdatamodeld in Sources */,
 				18852A0E1F2760D700C0EB3C /* MyDetailViewController.swift in Sources */,
 				187E626E1F220B0E0089D3DF /* AppDelegate.swift in Sources */,
