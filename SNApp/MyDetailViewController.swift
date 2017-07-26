@@ -44,18 +44,18 @@ class MyDetailViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        let aaa = ttt.loadArticlesFromDataBase()
-        return aaa.count
+        //let aaa = ttt.loadArticlesFromDataBase(data: myArray)
+        return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idCollCell", for: indexPath) as! MyCollectionViewCell
 
-        let aaa = ttt.loadArticlesFromDataBase()
-        cell.detTitLabel?.text = aaa[indexPath.row]
+       // let aaa = ttt.loadArticlesFromDataBase()
+      //cell.detTitLabel?.text = aaa[indexPath.row]
         
         
-        print("wow \(aaa)")
+      //  print("wow \(aaa)")
         
         return cell
     }

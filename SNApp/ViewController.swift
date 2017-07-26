@@ -18,7 +18,8 @@ class ViewController: UITableViewController {
     let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
     let realmMain = try! Realm()
     let newArt: InfoArraysData = InfoArraysData()
-    var classCityList: [String] = []
+    //var classCityList: [String] = []
+    var myArray = [MyNewRealm]()
 
 
     override func viewDidLoad() {
@@ -29,9 +30,8 @@ class ViewController: UITableViewController {
         self.tblView.estimatedRowHeight = 70.0
         
         loadData()
-        
-        classCityList = loadArticlesFromDataBase()
-        print(self.classCityList.count)
+       // let classCityList = loadArticlesFromDataBase(data: MyNewRealm)
+        print("ПРОВЕРКА СВЯЗИ: в массиве \(self.myArray.count) объектов")
         
         self.tblView.reloadData()
 
@@ -42,7 +42,7 @@ class ViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func loadData() {
+    func loadData() -> [MyNewRealm] {
         let myRealm = try! Realm()
 
         Alamofire.request(myURl, method: .get).validate().responseJSON { (myResp) in
@@ -50,69 +50,76 @@ class ViewController: UITableViewController {
             switch myResp.result {
             case .success(let myValue):
                 let myJSON = JSON(myValue)
-                let info = InfoListRealm()
-                info.articles_name = myJSON["articles"][0]["title"].stringValue
+                //let info = InfoListRealm()
+                //info.articles_name = myJSON["articles"][0]["title"].stringValue
 
                 for (_, subJSON) in myJSON["articles"] {
-                    let aaa = SNAppData()
-                    aaa.author = subJSON["author"].stringValue
-                    aaa.title = subJSON["title"].stringValue
-                    aaa.descriptionMy = subJSON["description"].stringValue
-                    aaa.publishedAt = subJSON["publishedAt"].stringValue
-                    aaa.url = subJSON["url"].stringValue
-                    aaa.urlToImage = subJSON["urlToImage"].stringValue
-                    self.newArt.authorList.append(subJSON["author"].stringValue)
-                    self.newArt.titleList.append(subJSON["title"].stringValue)
+                    let abc = MyNewRealm()
+                    abc.author = subJSON["author"].stringValue
+                    abc.title = subJSON["title"].stringValue
+                    abc.descriptionMy = subJSON["description"].stringValue
+                    abc.publishedAt = subJSON["publishedAt"].stringValue
+                    abc.url = subJSON["url"].stringValue
+                    abc.urlToImage = subJSON["urlToImage"].stringValue
+                    //self.newArt.authorList.append(subJSON["author"].stringValue)
+                    //self.newArt.titleList.append(subJSON["title"].stringValue)
                     
-                    info.myList.append(aaa)
+                    self.myArray.append(abc)
 
                 }
                 
-                print("OMG \n***\(info)")
+                print("МАССИВ ЗАПОЛНЕН \n***\(self.myArray)")
                 
                 try! myRealm.write {
-                    myRealm.add(info, update: true)
+                    myRealm.add(self.myArray, update: true)
                 }
-                
-                print("hi \n***************************************\(info)")
                 
             case .failure(let error):
                 print(error)
             
             }
-        
-            
         }
         
-       
+        print("*****************\n\("ПРОВЕРКА СВЯЗИ: в массиве \(self.myArray.count) объектов.")")
+
+        return self.myArray
     }
     
-    func loadArticlesFromDataBase() -> [String] {
-        let realmLoadArticles = try! Realm()
+    
+    func loadArticlesFromDataBase() -> [MyNewRealm] {
+   
+    
+        return self.myArray
+    }
+        
+    
+    
+        
+        /*let realmLoadArticles = try! Realm()
         var artclsArray: [String] = []
-        let newData = realmLoadArticles.objects(InfoListRealm.self)
+        let newData = realmLoadArticles.objects(MyNewRealm.self)
         
         for d in newData {
-            artclsArray.append(d.articles_name)
+            self.myArray.append(d.articles_name)
             print("Latest news: \(artclsArray.count)")
         }
         
-        return artclsArray
-    }
+        return artclsArray*/
+    
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let aaa = classCityList
-        return aaa.count
+        //let aaa = classCityList
+        return myArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
         
-        let aaa = classCityList
-        cell.myTitle?.text = aaa[indexPath.row]
+        //let aaa = classCityList
+        cell.myTitle?.text = myArray[indexPath.row].title
         //cell.authorTitle? = aaa[indexPath.row]
         
-        print("Hello \(aaa)")
+        //print("Hello \(aaa)")
         
         try! self.realmMain.write {
             self.realmMain.deleteAll()
