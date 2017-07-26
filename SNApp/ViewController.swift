@@ -15,64 +15,60 @@ import NVHTarGzip
 class ViewController: UITableViewController {
     @IBOutlet weak var tblView: UITableView!
 
-    let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
     let realmMain = try! Realm()
     let newArt: InfoArraysData = InfoArraysData()
-    //var classCityList: [String] = []
     var myArray = [MyNewRealm]()
-
+    var aaa: [String] = []
+    
+    
+    //работа с очередями:
+    let queGoupp = DispatchGroup()
+    let concurQueue = DispatchQueue(label: "concurrent", attributes: .concurrent)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL ?? AnyObject.self)
         
+        loadData(data: myArray)
+        print("\n ПРОВЕРКА: в массиве \(self.myArray.count) ОБЪЕКТОВ.")
+        
+        aaa = loadArticlesFromDataBase()
+        print(aaa)
+
+        
         self.tblView.rowHeight = UITableViewAutomaticDimension
         self.tblView.estimatedRowHeight = 70.0
         
-        loadData()
-       // let classCityList = loadArticlesFromDataBase(data: MyNewRealm)
-        print("ПРОВЕРКА СВЯЗИ: в массиве \(self.myArray.count) объектов")
-        
         self.tblView.reloadData()
-
-       
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
-    func loadData() -> [MyNewRealm] {
-        let myRealm = try! Realm()
+    
+    func loadData(data: Array<MyNewRealm>) {
 
-        Alamofire.request(myURl, method: .get).validate().responseJSON { (myResp) in
+        let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
+
+        Alamofire.request(myURl, method: .get).validate().responseJSON(queue: concurQueue) {
+            (myResp) in
+            print("\n 1. start \(Thread.current)")
  
             switch myResp.result {
             case .success(let myValue):
+
                 let myJSON = JSON(myValue)
-                //let info = InfoListRealm()
-                //info.articles_name = myJSON["articles"][0]["title"].stringValue
 
                 for (_, subJSON) in myJSON["articles"] {
-                    let abc = MyNewRealm()
+                let abc = MyNewRealm()
                     abc.author = subJSON["author"].stringValue
                     abc.title = subJSON["title"].stringValue
                     abc.descriptionMy = subJSON["description"].stringValue
                     abc.publishedAt = subJSON["publishedAt"].stringValue
                     abc.url = subJSON["url"].stringValue
                     abc.urlToImage = subJSON["urlToImage"].stringValue
-                    //self.newArt.authorList.append(subJSON["author"].stringValue)
-                    //self.newArt.titleList.append(subJSON["title"].stringValue)
-                    
                     self.myArray.append(abc)
+                }
+                print("\n 2. load \(Thread.current)")
+                print("\n ПРОВЕРКА: в массиве ИНФОРМАЦИЯ: \n \(self.myArray).")
 
-                }
-                
-                print("МАССИВ ЗАПОЛНЕН \n***\(self.myArray)")
-                
-                try! myRealm.write {
-                    myRealm.add(self.myArray, update: true)
-                }
                 
             case .failure(let error):
                 print(error)
@@ -80,22 +76,49 @@ class ViewController: UITableViewController {
             }
         }
         
-        print("*****************\n\("ПРОВЕРКА СВЯЗИ: в массиве \(self.myArray.count) объектов.")")
+        print("\n 4. return \(Thread.current)")
 
-        return self.myArray
     }
     
-    
-    func loadArticlesFromDataBase() -> [MyNewRealm] {
-   
-    
-        return self.myArray
+    func writeDB(data: MyNewRealm) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(data, update: true)
+        }
+        
+        print("\n 3. write \(Thread.current)")
+        
+        print("\n ПРОВЕРКА: в массиве ИНФОРМАЦИЯ: \n \(self.myArray).")
     }
-        
     
+    func loadDB(articles: String) -> Results<MyNewRealm> {
+        let realm = try! Realm()
+        let data = realm.objects(MyNewRealm.self).filter("title BEGINWITH %@", articles)
+        
+        return data
+    }
+    
+    func loadArticlesFromDataBase() -> [String] {
+        let realm = try! Realm()
+        var artclsArray: [String] = []
+        let data = realm.objects(MyNewRealm.self)
+        
+        for d in data {
+            artclsArray.append(d.title)
+        }
+        
+        print("\n test \(artclsArray)")
+
+        try! realm.write {
+            realm.add(data, update: true)
+        }
+        
+        return artclsArray
+        
+    }
     
         
-        /*let realmLoadArticles = try! Realm()
+   /*let realmLoadArticles = try! Realm()
         var artclsArray: [String] = []
         let newData = realmLoadArticles.objects(MyNewRealm.self)
         
@@ -106,30 +129,22 @@ class ViewController: UITableViewController {
         
         return artclsArray*/
     
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //let aaa = classCityList
-        return myArray.count
+        print("\n oops \(self.aaa.count)")
+        return self.aaa.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
+        cell.myTitle?.text = self.aaa[indexPath.row]
         
-        //let aaa = classCityList
-        cell.myTitle?.text = myArray[indexPath.row].title
-        //cell.authorTitle? = aaa[indexPath.row]
-        
-        //print("Hello \(aaa)")
-        
-        try! self.realmMain.write {
+       /* try! self.realmMain.write {
             self.realmMain.deleteAll()
             print("empty")
-        }
+        }*/
         
         return cell
     }
 
-    
 
 }
 
@@ -210,8 +225,9 @@ class ViewController: UITableViewController {
  
  return newArticlesList
  
- } */
-
+ }
+/*
+*/*/
 
 var load: AnyObject? {
     get {
@@ -222,3 +238,4 @@ var load: AnyObject? {
         UserDefaults.standard.synchronize()
     }
 }
+

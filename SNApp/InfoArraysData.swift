@@ -16,5 +16,10 @@ class InfoArraysData {
     
     var titleList: [String] = []
     var authorList: [String] = []
+    var descriptionList: [String] = []
+    var urlToImageList: [String] = []
+    var urlList: [String] = []
+    var publishedAtList: [String] = []
+
     
 }
