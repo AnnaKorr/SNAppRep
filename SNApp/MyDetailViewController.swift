@@ -54,6 +54,7 @@ class MyDetailViewController: UICollectionViewController {
         let aaa = ttt.loadArticlesFromDataBase()
         cell.detTitLabel?.text = aaa[indexPath.row]
         
+        
         print("wow \(aaa)")
         
         return cell

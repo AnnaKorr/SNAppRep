@@ -18,6 +18,8 @@ class ViewController: UITableViewController {
     let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
     let realmMain = try! Realm()
     let newArt: InfoArraysData = InfoArraysData()
+    var classCityList: [String] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,9 @@ class ViewController: UITableViewController {
         self.tblView.estimatedRowHeight = 70.0
         
         loadData()
-        loadArticlesFromDataBase()
+        
+        classCityList = loadArticlesFromDataBase()
+        print(self.classCityList.count)
         
         self.tblView.reloadData()
 
@@ -72,7 +76,7 @@ class ViewController: UITableViewController {
                     myRealm.add(info, update: true)
                 }
                 
-                print("hi \(info)")
+                print("hi \n***************************************\(info)")
                 
             case .failure(let error):
                 print(error)
@@ -92,7 +96,7 @@ class ViewController: UITableViewController {
         
         for d in newData {
             artclsArray.append(d.articles_name)
-            print("Latest news: \(artclsArray)")
+            print("Latest news: \(artclsArray.count)")
         }
         
         return artclsArray
@@ -178,14 +182,16 @@ class ViewController: UITableViewController {
     } */
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let aaa = loadArticlesFromDataBase()
+        let aaa = classCityList
         return aaa.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
         
-        let aaa = loadArticlesFromDataBase()
-        cell.myTitle?.text = aaa[indexPath.row]        
+        let aaa = classCityList
+        cell.myTitle?.text = aaa[indexPath.row]
+        //cell.authorTitle? = aaa[indexPath.row]
+        
         print("Hello \(aaa)")
         
         try! self.realmMain.write {

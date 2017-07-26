@@ -31,33 +31,44 @@
         <scene sceneID="wUX-U2-ha8">
             <objects>
                 <tableViewController title="Latest news" id="7B7-4z-XLb" customClass="ViewController" customModule="SNApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MA8-1e-5Xq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="MA8-1e-5Xq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="44" id="vAv-ws-bOy" customClass="MyTableViewCell" customModule="SNApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="86" id="vAv-ws-bOy" customClass="MyTableViewCell" customModule="SNApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vAv-ws-bOy" id="ZtC-gK-zE5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyx-Pr-rHU">
-                                            <rect key="frame" x="8" y="0.0" width="359" height="35.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyx-Pr-rHU">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="48"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKY-zn-ETe">
+                                            <rect key="frame" x="8" y="65" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="wKY-zn-ETe" firstAttribute="top" secondItem="ZtC-gK-zE5" secondAttribute="topMargin" constant="48" id="0qi-EF-h2h"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wKY-zn-ETe" secondAttribute="trailing" constant="8" id="8Cp-aJ-OZ7"/>
                                         <constraint firstItem="Dyx-Pr-rHU" firstAttribute="leading" secondItem="ZtC-gK-zE5" secondAttribute="leading" constant="8" id="FQI-dn-d9o"/>
                                         <constraint firstAttribute="bottom" secondItem="Dyx-Pr-rHU" secondAttribute="bottom" constant="8" id="LhL-1l-xwu"/>
+                                        <constraint firstItem="wKY-zn-ETe" firstAttribute="leading" secondItem="ZtC-gK-zE5" secondAttribute="leadingMargin" constant="8" id="XbM-6F-Hrb"/>
                                         <constraint firstAttribute="trailing" secondItem="Dyx-Pr-rHU" secondAttribute="trailing" constant="8" id="Xxz-uE-WXA"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="wKY-zn-ETe" secondAttribute="bottom" id="czO-hL-oHM"/>
                                         <constraint firstItem="Dyx-Pr-rHU" firstAttribute="top" secondItem="ZtC-gK-zE5" secondAttribute="top" id="ihu-NS-KRQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="authorTitle" destination="wKY-zn-ETe" id="ZUn-pg-1jm"/>
                                     <outlet property="myTitle" destination="Dyx-Pr-rHU" id="cUE-4p-t49"/>
                                     <segue destination="KUg-kO-LTY" kind="show" id="EUd-Y5-upl"/>
                                 </connections>
