@@ -33,6 +33,8 @@ class ViewController: UITableViewController {
         print("\n ПРОВЕРКА: в массиве \(self.myArray.count) ОБЪЕКТОВ.")
         
         aaa = loadArticlesFromDataBase()
+        print("\n ПРОВЕРКА: в массиве \(self.aaa.count) ОБЪЕКТОВ.")
+
         print(aaa)
 
         
@@ -107,11 +109,11 @@ class ViewController: UITableViewController {
             artclsArray.append(d.title)
         }
         
-        print("\n test \(artclsArray)")
-
         try! realm.write {
             realm.add(data, update: true)
         }
+        
+        print("\n test \(artclsArray)")
         
         return artclsArray
         
@@ -130,8 +132,8 @@ class ViewController: UITableViewController {
         return artclsArray*/
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\n oops \(self.aaa.count)")
-        return self.aaa.count
+        print("\n oops \(aaa.count)")
+        return aaa.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
