@@ -10,7 +10,7 @@ import UIKit
 
 class MyDetailViewController: UICollectionViewController {
     
-    var ttt = ViewController()
+    var titleInDetailsArray = ViewController().loadArticlesFromDataBase().0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,25 +37,18 @@ class MyDetailViewController: UICollectionViewController {
 
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        //let aaa = ttt.loadArticlesFromDataBase(data: myArray)
-        return 0
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idCollCell", for: indexPath) as! MyCollectionViewCell
-
-       // let aaa = ttt.loadArticlesFromDataBase()
-      //cell.detTitLabel?.text = aaa[indexPath.row]
+        cell.detTitLabel?.text = titleInDetailsArray[indexPath.row]
         
-        
-      //  print("wow \(aaa)")
         
         return cell
     }
