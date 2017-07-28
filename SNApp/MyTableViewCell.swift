@@ -13,6 +13,7 @@ class MyTableViewCell: UITableViewCell {
     @IBOutlet weak var myTitle: UILabel!
     
     @IBOutlet weak var authorTitle: UILabel!
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()

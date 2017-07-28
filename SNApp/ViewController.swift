@@ -50,7 +50,7 @@ class ViewController: UITableViewController {
     
     func loadData(data: Array<MyNewRealm>) {
 
-        let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
+        let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=8e1c098712084f1daae3de518d75e839"
 
         Alamofire.request(myURl, method: .get).validate().responseJSON(queue: concurQueue) {
             (myResp) in
@@ -145,19 +145,28 @@ class ViewController: UITableViewController {
         cell.myTitle?.text = self.toPrintArray[indexPath.row]
         cell.authorTitle?.text = self.toPrintArray2[indexPath.row]
         
-       /* try! self.realmMain.write {
+        try! self.realmMain.write {
             self.realmMain.deleteAll()
             print("empty")
-        }*/
+        }
         
         return cell
     }
 
 
-}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailsSegue" {
+            if let myIndexPath = tblView.indexPathForSelectedRow {
+                let destination2DetailsController = segue.destination as! MyDetailViewController
+                destination2DetailsController.titleInDetailsArray = [self.toPrintArray[myIndexPath.row]]
+            }
+        }
+    }
 
-/* func loadFile() {
- let listNews = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=6b7c247d75914da0b7a53c8bb951c279"
+/* 
+ // если раскомментировать код, пройдем полный цикл создания и записи файла в локальную БД
+ func loadFile() {
+ let listNews = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=8e1c098712084f1daae3de518d75e839"
  
  let myPath = NSHomeDirectory() + "/Documents/testfile2Write"
  print("Дома \n\(myPath)")
@@ -197,53 +206,5 @@ class ViewController: UITableViewController {
  
  }*/
 
-/* func loadDataBase(articleName: String) -> Results<Dog> {
- let realmDB = try! Realm()
- let myData = realmDB.objects(Dog.self).filter("dogName BEGINSWITH %@", articleName)
- 
- return myData
- }
- 
- func removeInfoFromDB(title: String) {
- let removeRealm = try! Realm()
- let removeData = removeRealm.objects(Dog.self).filter("dogName BEGINSWITH %@", title)
- 
- try! removeRealm.write {
- removeRealm.delete(removeData)
- }
- } */
 
-
-/* func loadArticlesList() -> [DataManager] {
- let realmListArticles = try! Realm()
- var newArticlesList: [DataManager] = []
- let articlesData = realmListArticles.objects(Dog.self)
- 
- for da in articlesData {
- let newInfo: DataManager = DataManager()
- newInfo.articleName = da.dogName
- for subDa in da.myList {
- newInfo.authorList.append(subDa.author)
- newInfo.titleList.append(subDa.title)
- }
- newArticlesList.append(newInfo)
- }
- 
- print("Hi: \n\(newArticlesList)")
- 
- return newArticlesList
- 
- }
-/*
-*/*/
-
-var load: AnyObject? {
-    get {
-        return UserDefaults.standard.object(forKey: "flag") as AnyObject?
-    }
-    set {
-        UserDefaults.standard.set(newValue, forKey: "flag")
-        UserDefaults.standard.synchronize()
-    }
 }
-
