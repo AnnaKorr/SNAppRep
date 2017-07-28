@@ -9,8 +9,13 @@
 import UIKit
 
 class MyDetailViewController: UICollectionViewController {
+    @IBAction func HyperLink(_ sender: Any) {
+        //openURL
+    }
     
     var titleInDetailsArray = ViewController().loadArticlesFromDataBase().0
+    var authorsInDetailsArray = ViewController().loadArticlesFromDataBase().1
+    var descriptionsIndetailsArray = ViewController().loadArticlesFromDataBase().2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +31,22 @@ class MyDetailViewController: UICollectionViewController {
     }
     
     func naviEdit() {
-        self.navigationController?.view.backgroundColor = UIColor.green
         self.navigationController?.view.tintColor = UIColor.darkGray
         self.navigationController?.title = "Latest News"
         
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+   
+    func openUrl(url:String!) {
+        
+        let targetURL = NSURL(fileURLWithPath: url)
+        
+        let application = UIApplication.shared
+        
+        application.openURL(targetURL as URL);
+        
     }
 
 
@@ -48,6 +62,8 @@ class MyDetailViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idCollCell", for: indexPath) as! MyCollectionViewCell
         cell.detTitLabel?.text = titleInDetailsArray[indexPath.row]
+        cell.detAuthLabel?.text = authorsInDetailsArray[indexPath.row]
+        cell.detDescrLabel?.text = descriptionsIndetailsArray[indexPath.row]
         
         
         return cell

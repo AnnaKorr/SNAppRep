@@ -17,8 +17,11 @@ class ViewController: UITableViewController {
 
     let realmMain = try! Realm()
     var myArray = [MyNewRealm]()
-    var toPrintArray: [String] = []
-    var toPrintArray2: [String] = []
+    var titlesArray: [String] = []
+    var authorsArray: [String] = []
+    var descriptionArray: [String] = []
+    var hyperLinksArray: [String] = []
+    
     
     
     //работа с очередями:
@@ -32,14 +35,11 @@ class ViewController: UITableViewController {
         loadData(data: myArray)
         print("\n !!!!!!!!!!! ПРОВЕРКА: в массиве \(self.myArray.count) ОБЪЕКТОВ.")
         
-        toPrintArray = loadArticlesFromDataBase().0
-        toPrintArray2 = loadArticlesFromDataBase().1
+        titlesArray = loadArticlesFromDataBase().0
+        authorsArray = loadArticlesFromDataBase().1
+        descriptionArray = loadArticlesFromDataBase().2
        
-        print("\n ************* ПРОВЕРКА: в массиве \(self.toPrintArray.count) названий, \(self.toPrintArray2.count) авторов.")
-        
-
-        print(toPrintArray)
-
+        print("\n ************* ПРОВЕРКА: в массиве \(self.titlesArray.count) названий, \(self.authorsArray.count) авторов.")
         
         self.tblView.rowHeight = UITableViewAutomaticDimension
         self.tblView.estimatedRowHeight = 200.0
@@ -109,27 +109,30 @@ class ViewController: UITableViewController {
         return data
     }
     
-    func loadArticlesFromDataBase() -> ([String],[String]) {
+    func loadArticlesFromDataBase() -> ([String],[String],[String]) {
         let realm = try! Realm()
-        var artclsArray: [String] = []
-        var authorsArray: [String] = []
-        var resultCortege: ([String], [String])
+        var titleDBArray: [String] = []
+        var authorsDBArray: [String] = []
+        var descriptionsDBArray: [String] = []
+        var resultCortege: ([String],[String],[String])
         
         let data = realm.objects(MyNewRealm.self)
         
         for value in data {
-            artclsArray.append(value.title)
-            authorsArray.append(value.author)
+            titleDBArray.append(value.title)
+            authorsDBArray.append(value.author)
+            descriptionsDBArray.append(value.descriptionMy)
         }
         
-        resultCortege.0 = artclsArray
-        resultCortege.1 = authorsArray
+        resultCortege.0 = titleDBArray
+        resultCortege.1 = authorsDBArray
+        resultCortege.2 = descriptionsDBArray
         
         try! realm.write {
             realm.add(data, update: true)
         }
         
-        print("\n test \(artclsArray)\n \(authorsArray)")
+        print("\n test \(titleDBArray)\n \(authorsDBArray)\n \(descriptionsDBArray)")
         
         return resultCortege
         
@@ -137,13 +140,13 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\n oops \(toPrintArray.count)")
-        return toPrintArray.count
+        print("\n oops \(titlesArray.count)")
+        return titlesArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
-        cell.myTitle?.text = self.toPrintArray[indexPath.row]
-        cell.authorTitle?.text = self.toPrintArray2[indexPath.row]
+        cell.myTitle?.text = self.titlesArray[indexPath.row]
+        cell.authorTitle?.text = self.authorsArray[indexPath.row]
         
         try! self.realmMain.write {
             self.realmMain.deleteAll()
@@ -158,7 +161,9 @@ class ViewController: UITableViewController {
         if segue.identifier == "detailsSegue" {
             if let myIndexPath = tblView.indexPathForSelectedRow {
                 let destination2DetailsController = segue.destination as! MyDetailViewController
-                destination2DetailsController.titleInDetailsArray = [self.toPrintArray[myIndexPath.row]]
+                destination2DetailsController.titleInDetailsArray = [self.titlesArray[myIndexPath.row]]
+                destination2DetailsController.authorsInDetailsArray = [self.authorsArray[myIndexPath.row]]
+                destination2DetailsController.descriptionsIndetailsArray = [self.descriptionArray[myIndexPath.row]]
             }
         }
     }
