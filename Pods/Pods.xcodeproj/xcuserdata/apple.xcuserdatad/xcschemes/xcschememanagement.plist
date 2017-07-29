@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NVHTarGzip.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2C3626FB71CE892F40D73C530C8CB039</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>602C0DEA9BAFA09519DDA9C340173800</key>
+		<key>1FCFF95409666775D6A0265717A629D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +57,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D657097D9DD499E944412C6F2BD4E87</key>
+		<key>9DB0D55B472A3D202FD3E93BD211EFF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1061A990B9D48EB6409CBAB6FDB5612</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE84FA0273FD6FD7AB98041F761C9E31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E723594799B06F94BC22DEEC4E809218</key>
 		<dict>
 			<key>primary</key>
 			<true/>

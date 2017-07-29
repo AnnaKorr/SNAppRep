@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.5.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - NVHTarGzip (1.0.1)
   - Realm (3.0.0-beta):
     - Realm/Headers (= 3.0.0-beta)
@@ -10,17 +12,19 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - AlamofireImage (~> 3.2)
   - NVHTarGzip
   - RealmSwift (= 3.0.0-beta)
   - SwiftyJSON (~> 3.1)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   NVHTarGzip: 74cc227b902e5725900d37eb6d79b57e93005a73
   Realm: 7b77385c9132bab2cbe65cdb76f316da43ce3b2d
   RealmSwift: 9f90214b2ea3f0eac85a583787983b0c41670283
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 97400c28ce2d4a0ac444ce2fc78662f455aa40bc
+PODFILE CHECKSUM: 6603c4abe7aa06b70d5051effbb9bf4397c2c062
 
 COCOAPODS: 1.2.1

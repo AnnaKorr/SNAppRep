@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vAv-ws-bOy" id="ZtC-gK-zE5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0T-S5-Q4X">
@@ -122,9 +122,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGb-Xa-F9S">
-                                            <rect key="frame" x="0.0" y="59" width="375" height="207"/>
+                                            <rect key="frame" x="0.0" y="59" width="375" height="190"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGP-fQ-6p6">
                                             <rect key="frame" x="93" y="448" width="189" height="30"/>
@@ -166,6 +165,7 @@
                                 <connections>
                                     <outlet property="detAuthLabel" destination="fiZ-7e-Oxu" id="RtH-7F-AFN"/>
                                     <outlet property="detDescrLabel" destination="kM7-Uf-7Ve" id="HuM-WP-irs"/>
+                                    <outlet property="detImgLabel" destination="eGb-Xa-F9S" id="iY3-rg-7oo"/>
                                     <outlet property="detTitLabel" destination="EHo-Vz-XN5" id="vhp-pR-GOT"/>
                                 </connections>
                             </collectionViewCell>

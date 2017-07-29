@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
+import SwiftyJSON
 
 class MyDetailViewController: UICollectionViewController {
     @IBAction func HyperLink(_ sender: Any) {
@@ -16,12 +19,13 @@ class MyDetailViewController: UICollectionViewController {
     var titleInDetailsArray = ViewController().loadArticlesFromDataBase().0
     var authorsInDetailsArray = ViewController().loadArticlesFromDataBase().1
     var descriptionsIndetailsArray = ViewController().loadArticlesFromDataBase().2
+    var imagesInDetailsArray = ViewController().loadArticlesFromDataBase().3
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         naviEdit()
-
+print("Wowowowow \n \(imagesInDetailsArray)")
      
     }
 
@@ -38,17 +42,6 @@ class MyDetailViewController: UICollectionViewController {
         backButton.title = "Back"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
-   
-    func openUrl(url:String!) {
-        
-        let targetURL = NSURL(fileURLWithPath: url)
-        
-        let application = UIApplication.shared
-        
-        application.openURL(targetURL as URL);
-        
-    }
-
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -65,6 +58,10 @@ class MyDetailViewController: UICollectionViewController {
         cell.detAuthLabel?.text = authorsInDetailsArray[indexPath.row]
         cell.detDescrLabel?.text = descriptionsIndetailsArray[indexPath.row]
         
+        let imgURL = NSURL(string: imagesInDetailsArray[indexPath.row])
+        print("ПРОВЕРЯЕМ НАДЛЕЖАЩУЮ ССЫЛКУ: \n \(String(describing: imgURL))")
+        
+        cell.detImgLabel?.af_setImage(withURL: imgURL! as URL, placeholderImage: UIImage(named: "SNApp_placeholder"), filter: AspectScaledToFillSizeFilter(size: CGSize(width: 375.0, height:190.0)) as ImageFilter, imageTransition: .crossDissolve(0.5), runImageTransitionIfCached: true, completion: nil)
         
         return cell
     }

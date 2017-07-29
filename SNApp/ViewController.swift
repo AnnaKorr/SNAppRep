@@ -20,7 +20,7 @@ class ViewController: UITableViewController {
     var titlesArray: [String] = []
     var authorsArray: [String] = []
     var descriptionArray: [String] = []
-    var hyperLinksArray: [String] = []
+    var imagesLinksArray: [String] = []
     
     
     
@@ -33,13 +33,13 @@ class ViewController: UITableViewController {
         print(Realm.Configuration.defaultConfiguration.fileURL ?? AnyObject.self)
         
         loadData(data: myArray)
-        print("\n !!!!!!!!!!! ПРОВЕРКА: в массиве \(self.myArray.count) ОБЪЕКТОВ.")
         
         titlesArray = loadArticlesFromDataBase().0
         authorsArray = loadArticlesFromDataBase().1
         descriptionArray = loadArticlesFromDataBase().2
+        imagesLinksArray = loadArticlesFromDataBase().3
        
-        print("\n ************* ПРОВЕРКА: в массиве \(self.titlesArray.count) названий, \(self.authorsArray.count) авторов.")
+        print("\n ************* ПРОВЕРКА: в массиве \(self.titlesArray.count) названий, \(self.authorsArray.count) авторов, \(self.descriptionArray.count) описаний, \(self.imagesLinksArray.count) изображений.")
         
         self.tblView.rowHeight = UITableViewAutomaticDimension
         self.tblView.estimatedRowHeight = 200.0
@@ -78,8 +78,6 @@ class ViewController: UITableViewController {
                 }
 
                 print("\n 2. load \(Thread.current)")
-                print("\n ПРОВЕРКА: в массиве ИНФОРМАЦИЯ: \n \(self.myArray).")
-
                 
             case .failure(let error):
                 print(error)
@@ -98,7 +96,6 @@ class ViewController: UITableViewController {
         }
         
         print("\n 3. write \(Thread.current)")
-        print("\n ПРОВЕРКА: в массиве ИНФОРМАЦИЯ: \n \(self.myArray).")
         
     }
     
@@ -109,12 +106,14 @@ class ViewController: UITableViewController {
         return data
     }
     
-    func loadArticlesFromDataBase() -> ([String],[String],[String]) {
+    func loadArticlesFromDataBase() -> ([String],[String],[String],[String]) {
         let realm = try! Realm()
         var titleDBArray: [String] = []
         var authorsDBArray: [String] = []
         var descriptionsDBArray: [String] = []
-        var resultCortege: ([String],[String],[String])
+        var imagesDBArray: [String] = []
+
+        var resultCortege: ([String],[String],[String],[String])
         
         let data = realm.objects(MyNewRealm.self)
         
@@ -122,17 +121,19 @@ class ViewController: UITableViewController {
             titleDBArray.append(value.title)
             authorsDBArray.append(value.author)
             descriptionsDBArray.append(value.descriptionMy)
+            imagesDBArray.append(value.urlToImage)
         }
         
         resultCortege.0 = titleDBArray
         resultCortege.1 = authorsDBArray
         resultCortege.2 = descriptionsDBArray
+        resultCortege.3 = imagesDBArray
         
         try! realm.write {
             realm.add(data, update: true)
         }
         
-        print("\n test \(titleDBArray)\n \(authorsDBArray)\n \(descriptionsDBArray)")
+        print("\n test \(titleDBArray)\n \(authorsDBArray)\n \(descriptionsDBArray)\n \(imagesDBArray)")
         
         return resultCortege
         
@@ -140,7 +141,6 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\n oops \(titlesArray.count)")
         return titlesArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -164,6 +164,7 @@ class ViewController: UITableViewController {
                 destination2DetailsController.titleInDetailsArray = [self.titlesArray[myIndexPath.row]]
                 destination2DetailsController.authorsInDetailsArray = [self.authorsArray[myIndexPath.row]]
                 destination2DetailsController.descriptionsIndetailsArray = [self.descriptionArray[myIndexPath.row]]
+                destination2DetailsController.imagesInDetailsArray = [self.imagesLinksArray[myIndexPath.row]]
             }
         }
     }
