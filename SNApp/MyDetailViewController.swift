@@ -12,48 +12,51 @@ import AlamofireImage
 import SwiftyJSON
 
 class MyDetailViewController: UICollectionViewController {
-    @IBAction func HyperLink(_ sender: Any) {
-        //openURL
+   
+    @IBAction func hyperLinkOpened(_ sender: UIButton) {
+         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "openSafari"),
+                                         object: nil)
     }
     
     var titleInDetailsArray = ViewController().loadArticlesFromDataBase().0
     var authorsInDetailsArray = ViewController().loadArticlesFromDataBase().1
     var descriptionsIndetailsArray = ViewController().loadArticlesFromDataBase().2
     var imagesInDetailsArray = ViewController().loadArticlesFromDataBase().3
-    
+    var urlsInDetailsArray = ViewController().loadArticlesFromDataBase().4
+    let imgURLNew = NSURL(string: "https://techcrunch.com/")
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         naviEdit()
-print("Wowowowow \n \(imagesInDetailsArray)")
+        print("Wowowowow \n \(imagesInDetailsArray)")
      
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
+           }
     
-    func naviEdit() {
-        self.navigationController?.view.tintColor = UIColor.darkGray
-        self.navigationController?.title = "Latest News"
-        
-        let backButton = UIBarButtonItem()
-        backButton.title = "Back"
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-    }
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
         return 1
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idCollCell", for: indexPath) as! MyCollectionViewCell
+    
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "idCollCell",
+                                                      for: indexPath) as! MyCollectionViewCell
+        
         cell.detTitLabel?.text = titleInDetailsArray[indexPath.row]
         cell.detAuthLabel?.text = authorsInDetailsArray[indexPath.row]
         cell.detDescrLabel?.text = descriptionsIndetailsArray[indexPath.row]
@@ -68,9 +71,29 @@ print("Wowowowow \n \(imagesInDetailsArray)")
                                      runImageTransitionIfCached: true,
                                      completion:nil)
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(opensSafari),
+                                               name: NSNotification.Name.init(rawValue: "openSafari"),
+                                               object: nil)
+        
         return cell
     }
- 
+    
+    
+    func opensSafari() {
+        UIApplication.shared.open(imgURLNew! as URL, options: [:], completionHandler: nil)
+        print("Hello\n Im a NoticCentre")
+    }
+    
+    
+    func naviEdit() {
+        self.navigationController?.view.tintColor = UIColor.darkGray
+        self.navigationController?.title = "Latest News"
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
 
     /*
     // Override to support conditional editing of the table view.

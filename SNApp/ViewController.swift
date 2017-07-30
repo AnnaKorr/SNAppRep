@@ -21,7 +21,7 @@ class ViewController: UITableViewController {
     var authorsArray: [String] = []
     var descriptionArray: [String] = []
     var imagesLinksArray: [String] = []
-    
+    var hyperLinksArray: [String] = []
     
     
     //работа с очередями:
@@ -38,11 +38,13 @@ class ViewController: UITableViewController {
         authorsArray = loadArticlesFromDataBase().1
         descriptionArray = loadArticlesFromDataBase().2
         imagesLinksArray = loadArticlesFromDataBase().3
+        hyperLinksArray = loadArticlesFromDataBase().4
+        
        
-        print("\n ************* ПРОВЕРКА: в массиве \(self.titlesArray.count) названий, \(self.authorsArray.count) авторов, \(self.descriptionArray.count) описаний, \(self.imagesLinksArray.count) изображений.")
+        print("\n ************* ПРОВЕРКА: в массиве \(self.titlesArray.count) названий, \(self.authorsArray.count) авторов, \(self.descriptionArray.count) описаний, \(self.imagesLinksArray.count) изображений, \(self.hyperLinksArray.count) ссылок на статьи.")
         
         self.tblView.rowHeight = UITableViewAutomaticDimension
-        self.tblView.estimatedRowHeight = 200.0
+        self.tblView.estimatedRowHeight = 104.0
         
         self.tblView.reloadData()
     }
@@ -107,14 +109,15 @@ class ViewController: UITableViewController {
         return data
     }
     
-    func loadArticlesFromDataBase() -> ([String],[String],[String],[String]) {
+    func loadArticlesFromDataBase() -> ([String],[String],[String],[String],[String]) {
         let realm = try! Realm()
         var titleDBArray: [String] = []
         var authorsDBArray: [String] = []
         var descriptionsDBArray: [String] = []
         var imagesDBArray: [String] = []
+        var urlDBArray: [String] = []
 
-        var resultCortege: ([String],[String],[String],[String])
+        var resultCortege: ([String],[String],[String],[String],[String])
         
         let data = realm.objects(NewsRealm.self)
         
@@ -123,29 +126,39 @@ class ViewController: UITableViewController {
             authorsDBArray.append(value.author)
             descriptionsDBArray.append(value.descriptionMy)
             imagesDBArray.append(value.urlToImage)
+            urlDBArray.append(value.url)
         }
         
         resultCortege.0 = titleDBArray
         resultCortege.1 = authorsDBArray
         resultCortege.2 = descriptionsDBArray
         resultCortege.3 = imagesDBArray
+        resultCortege.4 = urlDBArray
         
         try! realm.write {
             realm.add(data, update: true)
         }
         
-        print("\n test \(titleDBArray)\n \(authorsDBArray)\n \(descriptionsDBArray)\n \(imagesDBArray)")
+        print("\n test \(titleDBArray)\n \(authorsDBArray)\n \(descriptionsDBArray)\n \(imagesDBArray)\n")
         
         return resultCortege
         
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
+        
         return titlesArray.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyTableViewCell
+    
+    
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell",
+                                                 for: indexPath) as! MyTableViewCell
+        
         cell.myTitle?.text = self.titlesArray[indexPath.row]
         cell.authorTitle?.text = self.authorsArray[indexPath.row]
         
@@ -158,14 +171,20 @@ class ViewController: UITableViewController {
     }
 
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue,
+                          sender: Any?) {
+        
         if segue.identifier == "detailsSegue" {
+            
             if let myIndexPath = tblView.indexPathForSelectedRow {
+                
                 let destination2DetailsController = segue.destination as! MyDetailViewController
+                
                 destination2DetailsController.titleInDetailsArray = [self.titlesArray[myIndexPath.row]]
                 destination2DetailsController.authorsInDetailsArray = [self.authorsArray[myIndexPath.row]]
                 destination2DetailsController.descriptionsIndetailsArray = [self.descriptionArray[myIndexPath.row]]
                 destination2DetailsController.imagesInDetailsArray = [self.imagesLinksArray[myIndexPath.row]]
+                destination2DetailsController.urlsInDetailsArray = [self.hyperLinksArray[myIndexPath.row]]
             }
         }
     }
