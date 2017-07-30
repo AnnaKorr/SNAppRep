@@ -61,7 +61,12 @@ print("Wowowowow \n \(imagesInDetailsArray)")
         let imgURL = NSURL(string: imagesInDetailsArray[indexPath.row])
         print("ПРОВЕРЯЕМ НАДЛЕЖАЩУЮ ССЫЛКУ: \n \(String(describing: imgURL))")
         
-        cell.detImgLabel?.af_setImage(withURL: imgURL! as URL, placeholderImage: UIImage(named: "SNApp_placeholder"), filter: AspectScaledToFillSizeFilter(size: CGSize(width: 375.0, height:190.0)) as ImageFilter, imageTransition: .crossDissolve(0.5), runImageTransitionIfCached: true, completion: nil)
+        cell.detImgLabel?.af_setImage(withURL: imgURL! as URL,
+                                      placeholderImage:UIImage(named: "SNApp_placeholder"),
+                                      filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: CGSize(width: 375.0, height:190.0), radius: CGFloat(20.0)) as ImageFilter,
+                                     imageTransition: .crossDissolve(0.5),
+                                     runImageTransitionIfCached: true,
+                                     completion:nil)
         
         return cell
     }
