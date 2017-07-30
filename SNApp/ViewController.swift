@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
     @IBOutlet weak var tblView: UITableView!
 
     let realmMain = try! Realm()
-    var myArray = [MyNewRealm]()
+    var newsArray = [NewsRealm]()
     var titlesArray: [String] = []
     var authorsArray: [String] = []
     var descriptionArray: [String] = []
@@ -32,7 +32,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL ?? AnyObject.self)
         
-        loadData(data: myArray)
+        loadData(data: newsArray)
         
         titlesArray = loadArticlesFromDataBase().0
         authorsArray = loadArticlesFromDataBase().1
@@ -48,7 +48,7 @@ class ViewController: UITableViewController {
     }
     
     
-    func loadData(data: Array<MyNewRealm>) {
+    func loadData(data: Array<NewsRealm>) {
 
         let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=8e1c098712084f1daae3de518d75e839"
 
@@ -60,21 +60,22 @@ class ViewController: UITableViewController {
             switch myResp.result {
             case .success(let myValue):
 
+                
                 let myJSON = JSON(myValue)
 
                 for (_, subJSON) in myJSON["articles"] {
-                let infoo = MyNewRealm()
+                let infoo = NewsRealm()
                     infoo.author = subJSON["author"].stringValue
                     infoo.title = subJSON["title"].stringValue
                     infoo.descriptionMy = subJSON["description"].stringValue
                     infoo.publishedAt = subJSON["publishedAt"].stringValue
                     infoo.url = subJSON["url"].stringValue
                     infoo.urlToImage = subJSON["urlToImage"].stringValue
-                    self.myArray.append(infoo)
+                    self.newsArray.append(infoo)
                 }
                 
                 try! realm.write {
-                    realm.add(self.myArray, update: true)
+                    realm.add(self.newsArray, update: true)
                 }
 
                 print("\n 2. load \(Thread.current)")
@@ -89,7 +90,7 @@ class ViewController: UITableViewController {
 
     }
     
-    func writeDB(data: MyNewRealm) {
+    func writeDB(data: NewsRealm) {
         let realm = try! Realm()
         try! realm.write {
             realm.add(data, update: true)
@@ -99,9 +100,9 @@ class ViewController: UITableViewController {
         
     }
     
-    func loadDB(articles: String) -> Results<MyNewRealm> {
+    func loadDB(articles: String) -> Results<NewsRealm> {
         let realm = try! Realm()
-        let data = realm.objects(MyNewRealm.self).filter("title BEGINWITH %@", articles)
+        let data = realm.objects(NewsRealm.self).filter("title BEGINWITH %@", articles)
         
         return data
     }
@@ -115,7 +116,7 @@ class ViewController: UITableViewController {
 
         var resultCortege: ([String],[String],[String],[String])
         
-        let data = realm.objects(MyNewRealm.self)
+        let data = realm.objects(NewsRealm.self)
         
         for value in data {
             titleDBArray.append(value.title)

@@ -21,6 +21,7 @@ class MyDetailViewController: UICollectionViewController {
     var descriptionsIndetailsArray = ViewController().loadArticlesFromDataBase().2
     var imagesInDetailsArray = ViewController().loadArticlesFromDataBase().3
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +32,6 @@ print("Wowowowow \n \(imagesInDetailsArray)")
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func naviEdit() {

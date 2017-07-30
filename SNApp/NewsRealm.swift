@@ -1,8 +1,8 @@
 //
-//  MyNewRealm.swift
+//  NewsRealm.swift
 //  SNApp
 //
-//  Created by apple on 26.07.17.
+//  Created by apple on 30.07.17.
 //  Copyright © 2017 Korona. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import RealmSwift
 import Alamofire
 import SwiftyJSON
 
-class MyNewRealm: Object {
+class NewsRealm: Object {
     dynamic var author: String = ""
     dynamic var title: String = ""
     dynamic var descriptionMy: String = ""
@@ -20,7 +20,7 @@ class MyNewRealm: Object {
     dynamic var publishedAt: String = ""
     
     override static func primaryKey() -> String? {
-        return "author"
+        return "url"
     }
     
 }
