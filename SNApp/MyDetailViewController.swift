@@ -13,9 +13,8 @@ import SwiftyJSON
 
 class MyDetailViewController: UICollectionViewController {
    
-    @IBAction func hyperLinkOpened(_ sender: UIButton) {
-         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "openSafari"),
-                                         object: nil)
+    @IBAction func openBrowser(_ sender: UIButton) {
+      NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "openSafari"), object: nil)
     }
     
     var titleInDetailsArray = ViewController().loadArticlesFromDataBase().0
@@ -46,7 +45,7 @@ class MyDetailViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+                        numberOfItemsInSection section: Int) -> Int {
         return 1
     }
 
@@ -71,10 +70,7 @@ class MyDetailViewController: UICollectionViewController {
                                      runImageTransitionIfCached: true,
                                      completion:nil)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(opensSafari),
-                                               name: NSNotification.Name.init(rawValue: "openSafari"),
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(opensSafari), name: NSNotification.Name.init(rawValue: "openSafari"), object: nil)
         
         return cell
     }

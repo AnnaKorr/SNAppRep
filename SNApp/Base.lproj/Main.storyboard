@@ -153,7 +153,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleDetailLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHo-Vz-XN5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleDetailLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHo-Vz-XN5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -163,28 +163,19 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGP-fQ-6p6">
-                                            <rect key="frame" x="110" y="377" width="154" height="32"/>
-                                            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBp-aC-Mk5">
+                                            <rect key="frame" x="100" y="389" width="174" height="30"/>
+                                            <color key="backgroundColor" red="0.17482314169999999" green="1" blue="0.7723347491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="154" id="Ij6-QQ-XLO"/>
-                                                <constraint firstAttribute="height" constant="32" id="ccP-VJ-SO4"/>
+                                                <constraint firstAttribute="width" constant="174" id="er0-7P-p9W"/>
+                                                <constraint firstAttribute="height" constant="30" id="nPx-aE-E1Y"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <state key="normal" title="Load Full Article">
+                                            <state key="normal" title="Load More">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="HyperLink:" destination="YfR-uo-VZE" eventType="touchUpInside" id="eKL-vT-1Qo"/>
-                                                <action selector="hyperLinkOpened:" destination="YfR-uo-VZE" eventType="touchUpInside" id="JhN-1g-lpV"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-PV-Zx9">
-                                            <rect key="frame" x="164" y="419" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="openSafari:" destination="YfR-uo-VZE" eventType="touchUpInside" id="ubD-jD-jxm"/>
+                                                <action selector="openBrowser:" destination="YfR-uo-VZE" eventType="touchUpInside" id="mA6-Tc-9Em"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -194,11 +185,10 @@
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="top" secondItem="iTt-WE-K1u" secondAttribute="top" constant="68" id="8BX-MD-jpb"/>
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="trailing" secondItem="fiZ-7e-Oxu" secondAttribute="trailing" id="A9k-eh-yOY"/>
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="leading" secondItem="kM7-Uf-7Ve" secondAttribute="leading" id="E8w-RV-ukd"/>
-                                    <constraint firstItem="tGP-fQ-6p6" firstAttribute="centerX" secondItem="kM7-Uf-7Ve" secondAttribute="centerX" id="HJL-fc-c73"/>
                                     <constraint firstItem="fiZ-7e-Oxu" firstAttribute="top" secondItem="eGb-Xa-F9S" secondAttribute="bottom" constant="8" id="MdE-Yt-QJL"/>
-                                    <constraint firstItem="tGP-fQ-6p6" firstAttribute="top" secondItem="kM7-Uf-7Ve" secondAttribute="bottom" constant="8" id="N0y-Ub-Dy4"/>
                                     <constraint firstItem="4to-uM-K3G" firstAttribute="top" secondItem="eGb-Xa-F9S" secondAttribute="bottom" constant="8" id="RBd-kU-a7E"/>
                                     <constraint firstItem="fiZ-7e-Oxu" firstAttribute="leading" secondItem="4to-uM-K3G" secondAttribute="trailing" constant="3" id="ThL-Na-2ND"/>
+                                    <constraint firstItem="RBp-aC-Mk5" firstAttribute="centerX" secondItem="kM7-Uf-7Ve" secondAttribute="centerX" id="U5j-dY-b8R"/>
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="top" secondItem="EHo-Vz-XN5" secondAttribute="bottom" constant="8" id="V7G-mR-hs8"/>
                                     <constraint firstItem="fiZ-7e-Oxu" firstAttribute="top" secondItem="eGb-Xa-F9S" secondAttribute="bottom" constant="8" id="VKH-U4-P18"/>
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="leading" secondItem="iTt-WE-K1u" secondAttribute="leading" id="Xah-Yb-vnY"/>
@@ -210,6 +200,7 @@
                                     <constraint firstItem="fiZ-7e-Oxu" firstAttribute="top" secondItem="eGb-Xa-F9S" secondAttribute="bottom" constant="8" id="iY0-To-ypk"/>
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="trailing" secondItem="EHo-Vz-XN5" secondAttribute="trailing" id="nNd-nR-S3e"/>
                                     <constraint firstItem="eGb-Xa-F9S" firstAttribute="leading" secondItem="4to-uM-K3G" secondAttribute="leading" id="roY-uc-3pp"/>
+                                    <constraint firstItem="RBp-aC-Mk5" firstAttribute="top" secondItem="kM7-Uf-7Ve" secondAttribute="bottom" constant="20" id="xDK-eT-hig"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="detAuthLabel" destination="fiZ-7e-Oxu" id="2z4-uq-kcK"/>
