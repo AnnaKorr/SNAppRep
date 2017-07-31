@@ -91,23 +91,7 @@ class ViewController: UITableViewController {
         print("\n 4. return \(Thread.current)")
 
     }
-    
-    func writeDB(data: NewsRealm) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(data, update: true)
-        }
-        
-        print("\n 3. write \(Thread.current)")
-        
-    }
-    
-    func loadDB(articles: String) -> Results<NewsRealm> {
-        let realm = try! Realm()
-        let data = realm.objects(NewsRealm.self).filter("title BEGINWITH %@", articles)
-        
-        return data
-    }
+
     
     func loadArticlesFromDataBase() -> ([String],[String],[String],[String],[String]) {
         let realm = try! Realm()
