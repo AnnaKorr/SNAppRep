@@ -12,7 +12,6 @@ import AlamofireImage
 import SwiftyJSON
 
 class MyDetailViewController: UICollectionViewController {
-   
     @IBAction func openBrowser(_ sender: UIButton) {
       NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "openSafari"), object: nil)
     }

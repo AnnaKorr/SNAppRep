@@ -12,12 +12,28 @@ import Alamofire
 import SwiftyJSON
 import NVHTarGzip
 
-class ManagerData {
-    var newsArray = [NewsRealm]()
+private let _labelManager = ManagerData()
 
+class ManagerData {
     let queGoupp = DispatchGroup()
     let concurQueue = DispatchQueue(label: "concurrent", attributes: .concurrent)
-
+    var newsArray = [NewsRealm]()
+    
+    class var singletoneManager: ManagerData {
+        return _labelManager
+    }
+    
+    private var _newsRealm: [NewsRealm] = []
+    
+    var newsRealm: [NewsRealm] {
+        var newsRealmCopy: [NewsRealm]!
+        concurQueue.sync {
+            newsRealmCopy = self._newsRealm
+        }
+        
+        return newsRealmCopy
+    }
+    
     func loadData(data: Array<NewsRealm>) {
         
         let myURl = "https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=8e1c098712084f1daae3de518d75e839"
@@ -90,10 +106,6 @@ class ManagerData {
         try! realm.write {
             realm.add(data, update: true)
         }
-        
-
-       // print("\n test \(titleDBArray)\n \(authorsDBArray)\n \(descriptionsDBArray)\n \(imagesDBArray)\n")
-        
 
         return resultCortege
         
