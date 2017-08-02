@@ -29,7 +29,7 @@
         <!--Latest news-->
         <scene sceneID="wUX-U2-ha8">
             <objects>
-                <tableViewController title="Latest news" id="7B7-4z-XLb" customClass="ViewController" customModule="SNApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Latest news" id="7B7-4z-XLb" customClass="NewsListViewController" customModule="SNApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" id="MA8-1e-5Xq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

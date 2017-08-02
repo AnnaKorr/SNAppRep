@@ -17,11 +17,11 @@ class MyDetailViewController: UICollectionViewController {
       NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "openSafari"), object: nil)
     }
     
-    var titleInDetailsArray = ViewController().loadArticlesFromDataBase().0
-    var authorsInDetailsArray = ViewController().loadArticlesFromDataBase().1
-    var descriptionsIndetailsArray = ViewController().loadArticlesFromDataBase().2
-    var imagesInDetailsArray = ViewController().loadArticlesFromDataBase().3
-    var urlsInDetailsArray = ViewController().loadArticlesFromDataBase().4
+    var titleInDetailsArray = NewsListViewController().titlesArray
+    var authorsInDetailsArray = NewsListViewController().authorsArray
+    var descriptionsIndetailsArray = NewsListViewController().descriptionArray
+    var imagesInDetailsArray = NewsListViewController().imagesLinksArray
+    var urlsInDetailsArray = NewsListViewController().hyperLinksArray
     let imgURLNew = NSURL(string: "https://techcrunch.com/")
    
     
@@ -29,7 +29,6 @@ class MyDetailViewController: UICollectionViewController {
         super.viewDidLoad()
 
         naviEdit()
-        print("Wowowowow \n \(imagesInDetailsArray)")
      
     }
 
@@ -61,7 +60,7 @@ class MyDetailViewController: UICollectionViewController {
         cell.detDescrLabel?.text = descriptionsIndetailsArray[indexPath.row]
         
         let imgURL = NSURL(string: imagesInDetailsArray[indexPath.row])
-        print("ПРОВЕРЯЕМ НАДЛЕЖАЩУЮ ССЫЛКУ: \n \(String(describing: imgURL))")
+        print("ССЫЛКA НА ИЗОБРАЖЕНИЕ: \n \(String(describing: imgURL))")
         
         cell.detImgLabel?.af_setImage(withURL: imgURL! as URL,
                                       placeholderImage:UIImage(named: "SNApp_placeholder"),
@@ -78,7 +77,7 @@ class MyDetailViewController: UICollectionViewController {
     
     func opensSafari() {
         UIApplication.shared.open(imgURLNew! as URL, options: [:], completionHandler: nil)
-        print("Hello\n Im a NoticCentre")
+        print("Hello\n I'm a NotifCentre")
     }
     
     

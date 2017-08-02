@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180707691F31DBE900A9256B /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180707681F31DBE900A9256B /* ManagerData.swift */; };
 		183B4D6F1F24D25400E3ACF2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B4D6E1F24D25400E3ACF2 /* Utils.swift */; };
 		187E626E1F220B0E0089D3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E626D1F220B0E0089D3DF /* AppDelegate.swift */; };
-		187E62701F220B0E0089D3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E626F1F220B0E0089D3DF /* ViewController.swift */; };
+		187E62701F220B0E0089D3DF /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E626F1F220B0E0089D3DF /* NewsListViewController.swift */; };
 		187E62731F220B0E0089D3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187E62711F220B0E0089D3DF /* Main.storyboard */; };
 		187E62761F220B0E0089D3DF /* SNApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187E62741F220B0E0089D3DF /* SNApp.xcdatamodeld */; };
 		187E62781F220B0E0089D3DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187E62771F220B0E0089D3DF /* Assets.xcassets */; };
@@ -17,17 +18,16 @@
 		18852A0C1F2757A500C0EB3C /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0B1F2757A500C0EB3C /* MyTableViewCell.swift */; };
 		18852A0E1F2760D700C0EB3C /* MyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */; };
 		18852A101F27734000C0EB3C /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */; };
-		18852A121F277D0F00C0EB3C /* SNAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A111F277D0F00C0EB3C /* SNAppData.swift */; };
-		18852A161F278AA700C0EB3C /* InfoListRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18852A151F278AA700C0EB3C /* InfoListRealm.swift */; };
 		18FC70251F2DC91100B13A25 /* NewsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FC70241F2DC91100B13A25 /* NewsRealm.swift */; };
 		971558694D0B2F769C1CB850 /* Pods_SNApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95180F2B2FDA752C0A41D659 /* Pods_SNApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180707681F31DBE900A9256B /* ManagerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		183B4D6E1F24D25400E3ACF2 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		187E626A1F220B0E0089D3DF /* SNApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187E626D1F220B0E0089D3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		187E626F1F220B0E0089D3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		187E626F1F220B0E0089D3DF /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		187E62721F220B0E0089D3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		187E62751F220B0E0089D3DF /* SNApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SNApp.xcdatamodel; sourceTree = "<group>"; };
 		187E62771F220B0E0089D3DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,8 +36,6 @@
 		18852A0B1F2757A500C0EB3C /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDetailViewController.swift; sourceTree = "<group>"; };
 		18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
-		18852A111F277D0F00C0EB3C /* SNAppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNAppData.swift; sourceTree = "<group>"; };
-		18852A151F278AA700C0EB3C /* InfoListRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoListRealm.swift; sourceTree = "<group>"; };
 		18FC70241F2DC91100B13A25 /* NewsRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRealm.swift; sourceTree = "<group>"; };
 		3992FD896EDE34DC06678455 /* Pods-SNApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNApp/Pods-SNApp.release.xcconfig"; sourceTree = "<group>"; };
 		3F0066EAB52454D8464F5CD1 /* Pods-SNApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNApp/Pods-SNApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,8 +75,10 @@
 		187E626C1F220B0E0089D3DF /* SNApp */ = {
 			isa = PBXGroup;
 			children = (
+				187E626D1F220B0E0089D3DF /* AppDelegate.swift */,
 				18FC70241F2DC91100B13A25 /* NewsRealm.swift */,
-				187E626F1F220B0E0089D3DF /* ViewController.swift */,
+				180707681F31DBE900A9256B /* ManagerData.swift */,
+				187E626F1F220B0E0089D3DF /* NewsListViewController.swift */,
 				18852A0D1F2760D700C0EB3C /* MyDetailViewController.swift */,
 				18852A0B1F2757A500C0EB3C /* MyTableViewCell.swift */,
 				18852A0F1F27733F00C0EB3C /* MyCollectionViewCell.swift */,
@@ -86,9 +86,6 @@
 				187E62711F220B0E0089D3DF /* Main.storyboard */,
 				187E62771F220B0E0089D3DF /* Assets.xcassets */,
 				187E62791F220B0E0089D3DF /* LaunchScreen.storyboard */,
-				187E626D1F220B0E0089D3DF /* AppDelegate.swift */,
-				18852A111F277D0F00C0EB3C /* SNAppData.swift */,
-				18852A151F278AA700C0EB3C /* InfoListRealm.swift */,
 				187E627C1F220B0E0089D3DF /* Info.plist */,
 				187E62741F220B0E0089D3DF /* SNApp.xcdatamodeld */,
 			);
@@ -235,16 +232,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				187E62701F220B0E0089D3DF /* ViewController.swift in Sources */,
-				18852A121F277D0F00C0EB3C /* SNAppData.swift in Sources */,
+				187E62701F220B0E0089D3DF /* NewsListViewController.swift in Sources */,
 				18852A0C1F2757A500C0EB3C /* MyTableViewCell.swift in Sources */,
-				18852A161F278AA700C0EB3C /* InfoListRealm.swift in Sources */,
 				187E62761F220B0E0089D3DF /* SNApp.xcdatamodeld in Sources */,
 				18852A0E1F2760D700C0EB3C /* MyDetailViewController.swift in Sources */,
 				187E626E1F220B0E0089D3DF /* AppDelegate.swift in Sources */,
 				18FC70251F2DC91100B13A25 /* NewsRealm.swift in Sources */,
 				183B4D6F1F24D25400E3ACF2 /* Utils.swift in Sources */,
 				18852A101F27734000C0EB3C /* MyCollectionViewCell.swift in Sources */,
+				180707691F31DBE900A9256B /* ManagerData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
