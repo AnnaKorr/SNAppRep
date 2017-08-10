@@ -32,7 +32,7 @@ class NewsListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Realm.Configuration.defaultConfiguration.fileURL ?? AnyObject.self)
+        print(Realm.Configuration.defaultConfiguration.fileURL ?? Any.self)
         let letsTest = managerDataLoader.loadArticlesFromDataBase()
         
         managerDataLoader.loadData(data: newNewsArray)
